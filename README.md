@@ -5,12 +5,12 @@ This repository contains the implementation of word2vec algorithm to produce wor
 
 1. word2vec_basic.py
 
--> In this file generate_batch(data, batch_size, num_skips, skip_window) function was implemented to return list of
+• In this file generate_batch(data, batch_size, num_skips, skip_window) function was implemented to return list of
 context words (batch) and predicted words (labels) of length = batch_size.
--> I extracted the elements of window size from the array by calculating window_size = 2*skip_window+1. Then we define the
+• I extracted the elements of window size from the array by calculating window_size = 2*skip_window+1. Then we define the
 position of the context word context_index = len(win_grab)//2.
--> I extracted word ids from left and right of the context word and the no of extracted word ids is equal to num_skips.
--> After, this the pair of (context word, predicted word) was inserted in the batch_list and then these values are added to
+• I extracted word ids from left and right of the context word and the no of extracted word ids is equal to num_skips.
+• After, this the pair of (context word, predicted word) was inserted in the batch_list and then these values are added to
 the np arrays batch and labels and returned for further processing.
 
 2. loss_func.py
@@ -19,12 +19,12 @@ In this file 2 loss functions were implemented as follows:
 
 a) Cross Entropy Loss
 
--> For this I implemented cross_entropy_loss(inputs, true_w) function.
--> Then calculate two values A, which simply calculates log of exponent of dot product of u_o (context word) and v_c
+• For this I implemented cross_entropy_loss(inputs, true_w) function.
+• Then calculate two values A, which simply calculates log of exponent of dot product of u_o (context word) and v_c
 (predicted word). Here the use tf.einsum() is to calculate dot product between u_o and v_c, tf.exp() to calculate exponent
 and tf.log to calculate final logarithmic value.
--> For second value B calculate log of summation of exponent of matrix multiplication of u_w (inputs) and v_c (true_w).
--> Final loss value is retured as difference of B and A calulated as tf.subtract(B,A)
+• For second value B calculate log of summation of exponent of matrix multiplication of u_w (inputs) and v_c (true_w).
+• Final loss value is retured as difference of B and A calulated as tf.subtract(B,A)
 
 b) NCE Loss
 
